@@ -3,6 +3,15 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+variables:
+  - name : dockerId
+    value: LuluDemoCR
+
+  - name: dockerPassword 
+    value: sriFSNPxK065BhgE/WQTxpPnM=EwMb1P 
+
+
+
 trigger:
 - master
 
