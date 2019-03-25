@@ -11,18 +11,20 @@ pool:
 
 steps:
 - script: dotnet restore
+  displayName: 'Restoring the packages'
 
 - script: dotnet build
   displayName: 'Running the build command'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Running the build command'
+  displayName: 'Running the unit tests'
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Collecting the code coverage'
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
@@ -32,3 +34,4 @@ steps:
   displayName: 'Publishing the output of the build'
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publishing the artifacts'
